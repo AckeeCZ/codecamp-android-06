@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/main" android:checkableBehavior="single">
+
+        <item android:id="@+id/nav_main_thread"
+            android:title="@string/main_thread"/>
+
+        <item android:id="@+id/nav_thread_handler"
+            android:title="@string/thread_handler"/>
+
+        <item android:id="@+id/nav_async_task"
+            android:title="@string/async_task"/>
+
+        <item android:id="@+id/nav_retrofit"
+            android:title="@string/retrofit"/>
+
+    </group>
+
+</menu>
