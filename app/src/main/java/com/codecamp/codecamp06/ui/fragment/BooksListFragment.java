@@ -107,7 +107,6 @@ public abstract class BooksListFragment extends Fragment implements GetBooksList
 
     @Override
     public void onBooksLoaded(List<Book> books) {
-        Log.d(TAG, "onBooksLoaded: ");
         adapter = new BooksAdapter(books, new OnItemClickListener<Book>() {
             @Override
             public void onItemClick(Book item) {

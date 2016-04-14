@@ -36,7 +36,6 @@ public class MainThreadBooksListFragment extends BooksListFragment{
         super.onCreate(savedInstanceState);
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
         StrictMode.setThreadPolicy(policy);
     }
 

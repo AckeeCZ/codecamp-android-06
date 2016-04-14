@@ -5,11 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.codecamp.codecamp06.R;
 import com.codecamp.codecamp06.listener.OnItemClickListener;
 import com.codecamp.codecamp06.model.Book;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -48,18 +50,27 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
         private TextView txtTitle;
         private TextView txtAuthor;
         private View indicatorColor;
+        private ImageView image;
 
         public ViewHolder(View itemView) {
             super(itemView);
             txtTitle = (TextView) itemView.findViewById(R.id.txt_title);
             txtAuthor = (TextView) itemView.findViewById(R.id.txt_author);
             indicatorColor = itemView.findViewById(R.id.indicator_color);
+            image = (ImageView) itemView.findViewById(R.id.image);
         }
 
         public void bindView(Book book) {
             indicatorColor.setBackgroundColor(Color.parseColor(book.getColor()));
             txtTitle.setText(book.getTitle());
             txtAuthor.setText(book.getAuthor());
+
+            if (book.getImage() != null) {
+                image.setVisibility(View.VISIBLE);
+                Picasso.with(itemView.getContext()).load(book.getImage()).into(image);
+            } else {
+                image.setVisibility(View.GONE);
+            }
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
