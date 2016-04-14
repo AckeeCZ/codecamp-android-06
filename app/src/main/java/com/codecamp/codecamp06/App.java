@@ -3,10 +3,13 @@ package com.codecamp.codecamp06;
 import android.app.Application;
 
 import com.codecamp.codecamp06.rest.ApiDescription;
+import com.facebook.stetho.Stetho;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -30,6 +33,8 @@ public class App extends Application {
         super.onCreate();
         instance = this;
 
+        Stetho.initializeWithDefaults(this);
+
         initRetrofit();
     }
 
@@ -41,6 +46,9 @@ public class App extends Application {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Config.API_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(new OkHttpClient.Builder()
+                        .addNetworkInterceptor(new StethoInterceptor())
+                        .build())
                 .build();
 
         apiDescription = retrofit.create(ApiDescription.class);
