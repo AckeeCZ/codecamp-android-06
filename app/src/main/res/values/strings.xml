@@ -10,4 +10,5 @@
     <string name="thread_handler">Thread + Handler</string>
     <string name="async_task">AsyncTask</string>
     <string name="retrofit">Retrofit</string>
+    <string name="rx_retrofit">Rx Retrofit</string>
 </resources>

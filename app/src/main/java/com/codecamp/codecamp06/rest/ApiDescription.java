@@ -7,6 +7,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import rx.Observable;
 
 /**
  * Description for our books REST API.
@@ -16,4 +17,7 @@ public interface ApiDescription {
 
     @GET(Config.URL_BOOKS)
     Call<List<Book>> getBooks();
+
+    @GET(Config.URL_BOOKS)
+    Observable<List<Book>> getBooksRx();
 }

@@ -16,6 +16,7 @@ import com.codecamp.codecamp06.R;
 import com.codecamp.codecamp06.ui.fragment.AsyncTaskBooksListFragment;
 import com.codecamp.codecamp06.ui.fragment.MainThreadBooksListFragment;
 import com.codecamp.codecamp06.ui.fragment.RetrofitBooksListFragment;
+import com.codecamp.codecamp06.ui.fragment.RxRetrofitBooksListFragment;
 import com.codecamp.codecamp06.ui.fragment.ThreadBooksListFragment;
 
 /**
@@ -64,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_retrofit:
                         fragmentName = RetrofitBooksListFragment.class.getName();
                         break;
+                    case R.id.nav_rx_retrofit:
+                        fragmentName = RxRetrofitBooksListFragment.class.getName();
+                        break;
 
                     default:
                         fragmentName = null;
@@ -71,12 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
                 drawerLayout.closeDrawers();
 
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        replaceFragment(fragmentName);
-                    }
-                }, 250);
+                new Handler().postDelayed(() -> replaceFragment(fragmentName), 250);
 
                 return true;
             }
